@@ -77,13 +77,13 @@ public class WebSocketServer {
                 //解析发送的报文
                 JSONObject jsonObject = JSON.parseObject(message);
                 //追加发送人(防止串改)
-                jsonObject.put("fromUserId",this.userId);
-                String toUserId=jsonObject.getString("toUserId");
+                jsonObject.put("client",this.userId);
+                String target = jsonObject.getString("target");
                 //传送给对应toUserId用户的websocket
-                if(StringUtils.isNotBlank(toUserId)&&webSocketMap.containsKey(toUserId)){
-                    webSocketMap.get(toUserId).sendMessage(jsonObject.toJSONString());
+                if(StringUtils.isNotBlank(target)&&webSocketMap.containsKey(target)){
+                    webSocketMap.get(target).sendMessage(jsonObject.toJSONString());
                 }else{
-                    System.out.println("请求的userId:"+toUserId+"不在该服务器上");
+                    System.out.println("请求的userId:" + target + "不在该服务器上");
                     //否则不在这个服务器上，发送到mysql或者redis
                 }
             }catch (Exception e){
