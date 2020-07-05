@@ -25,6 +25,7 @@ public class WebSocketServer {
     @OnOpen
     public void onOpen(Session session,@PathParam("userId") String userId) {
 
+        // 存储用户和session映射关系 如果已存在 关闭之前的连接
         if (sessionMap.containsKey(userId)) {
             try {
                 sessionMap.get(userId).close();
@@ -36,7 +37,10 @@ public class WebSocketServer {
         sessionMap.put(userId, session);
 
         try {
-            session.getBasicRemote().sendText("上线成功");
+            BaseMsg msg = new BaseMsg("notice", "server", userId, "上线成功");
+            Gson gson = new Gson();
+            String msgStr = gson.toJson(msg);
+            session.getBasicRemote().sendText(msgStr);
         } catch (IOException e) {
             System.out.println("用户:"+userId+",上线失败");
         }
@@ -57,6 +61,7 @@ public class WebSocketServer {
 
                 switch (type) {
                     case "sendMsg": {
+                        // 发送信息到指定用户
                         BaseMsg msg = new BaseMsg("msg", userId, target, note);
                         if( StringUtils.isNotBlank(target) && sessionMap.containsKey(target)){
                             String msgStr = gson.toJson(msg);
