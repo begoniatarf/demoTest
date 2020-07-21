@@ -1,4 +1,4 @@
-package com.example.demo.demo.domain;
+package com.example.chat.chat.domain;
 
 public class BaseMsg {
     private String type;
