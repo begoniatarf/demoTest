@@ -1,4 +1,4 @@
-package com.example.chat.chat.server;
+package com.example.chat.chat.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

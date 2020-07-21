@@ -1,6 +1,6 @@
 package com.example.chat.chat.config;
 
-import com.example.chat.chat.server.NioWebSocketHandler;
+import com.example.chat.chat.handler.NioWebSocketHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
