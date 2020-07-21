@@ -1,4 +1,4 @@
-package com.example.demo.demo.server;
+package com.example.chat.chat.server;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -11,8 +11,8 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
-@ServerEndpoint("/wsMessage/{userId}")
-@Component
+//@ServerEndpoint("/wsMessage/{userId}")
+//@Component
 public class WebSocketServer {
 
     /**静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。*/
