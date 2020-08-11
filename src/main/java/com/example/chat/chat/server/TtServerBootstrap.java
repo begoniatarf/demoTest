@@ -1,9 +1,8 @@
 package com.example.chat.chat.server;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class TtServerBootstrap implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
